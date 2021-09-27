@@ -76,7 +76,7 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<!--            surefire-->
+<!--            surefire-->
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.2</version>
@@ -87,7 +87,7 @@
 					</includes>
 				</configuration>
 			</plugin>
-			<!--            jacoco -->
+<!--            jacoco -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -128,7 +128,7 @@
 										<limit>
 											<counter>INSTRUCTION</counter>
 											<value>COVEREDRATIO</value>
-											<!--                                            TODO customize coverage checks-->
+<!--               	                             TODO customize coverage checks-->
 											<minimum>0.00</minimum>
 										</limit>
 									</limits>
