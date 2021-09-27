@@ -1,22 +1,22 @@
 package de.keeyzar.checkimdb.imdbclone.model;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
 @Table(name = "Film")
-@NoArgsConstructor
 public class Film {
     @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -25,3 +25,5 @@ public class Film {
 
     //additional data may be added in the future
 }
+
+

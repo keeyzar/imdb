@@ -1,30 +1,27 @@
 package de.keeyzar.checkimdb.imdbclone.model;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 //data can't be used when Entity is used
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
 @Table(name = "User")
-@NoArgsConstructor
 public class User {
 
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username")
-    private String password;
-
-    @Column(name = "password")
     private String username;
+    private String password;
+    private String role;
+    private boolean enabled;
 }
