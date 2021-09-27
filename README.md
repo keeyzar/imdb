@@ -23,7 +23,9 @@ TODO see notes written by me, add them later on, at least half an hour before en
 - spring security rudimentary functionality
 - H2 (for rapid prototyping, without setting up docker mysql db)
 - lombok, removing boilerplate
-- logging (log4j2)
+- logging sl4j2 at the moment, may be replaced with
+  log4j2
+
 - rest assured for testing rest calls
 - junit 5 + mockito + assertJ for testing
 - 
