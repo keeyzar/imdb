@@ -32,5 +32,10 @@ public class Rating {
     //add constraint with columnDefinition, rating is between 0-5? or is this an assumption?
     @Column(name = "userrating")
     private Double rating;
-
+/**
+ *
+ * 1, 1, 4.5
+ * 2, 1, 3.0
+ *
+ */
 }

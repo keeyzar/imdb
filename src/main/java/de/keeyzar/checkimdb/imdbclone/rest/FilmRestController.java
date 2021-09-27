@@ -26,6 +26,9 @@ public class FilmRestController {
     @GetMapping("/film")
     public List<Film> getAllFilms(@RequestParam(name="name", defaultValue = "") String filmName)
     {
+        //rating in film beim serialisieren ist eine zyklische referenz, die im StackOverflow endet
+        //daher sollte ich niemals DTO == entity rausgeben.
+
         if("".equals(filmName)) {
             return filmSearchService.findAllFilms();
         } else {

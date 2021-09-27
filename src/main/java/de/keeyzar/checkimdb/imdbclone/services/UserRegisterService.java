@@ -31,6 +31,7 @@ public class UserRegisterService {
                 .username(userDTO.getUsername())
                 .password(encodePassword(userDTO.getPassword()))
                 .build();
+
         userRepository.save(user);
     }
 

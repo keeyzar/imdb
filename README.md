@@ -8,7 +8,7 @@ see written notes at the end from me
 
 - frontend:
   - thymeleaf as template engine
-  - javascript + AJAX for asynchronous rest calls
+  - javascript + AJAX for asynchronous rest calls (not implemented)
 - backend:
   - spring boot
   - h2 db
@@ -28,7 +28,6 @@ TODO see notes written by me, add them later on, at least half an hour before en
 
 - rest assured for testing rest calls
 - junit 5 + mockito + assertJ for testing
-- 
 
 # steps to take:
 1. set up project with h2 db, logging etc.
