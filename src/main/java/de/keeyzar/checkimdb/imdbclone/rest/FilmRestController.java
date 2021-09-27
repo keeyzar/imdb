@@ -2,6 +2,7 @@ package de.keeyzar.checkimdb.imdbclone.rest;
 
 import de.keeyzar.checkimdb.imdbclone.model.Film;
 import de.keeyzar.checkimdb.imdbclone.services.FilmSearchService;
+import de.keeyzar.checkimdb.imdbclone.services.RatingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.annotation.Secured;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -20,23 +22,22 @@ import java.util.List;
 public class FilmRestController {
 
     private final FilmSearchService filmSearchService;
+    private final RatingService ratingService;
 
     @Secured("ROLE_USER")
     @GetMapping("/film")
-    public List<Film> getAllFilms(){
-        return filmSearchService.findAllFilms();
-    }
-
-    @Secured("ROLE_USER")
-    @GetMapping("/film")
-    public List<Film> getFilm(@RequestParam(name="name") String name){
-        return filmSearchService.findFilmByName(name);
+    public List<Film> getAllFilms(@RequestParam(name="name", defaultValue = "") String filmName)
+    {
+        if("".equals(filmName)) {
+            return filmSearchService.findAllFilms();
+        } else {
+            return filmSearchService.findFilmByName(filmName);
+        }
     }
 
     @GetMapping("/rating/{filmId}")
     @Secured("ROLE_USER")
-    public void rateFilm(@PathVariable String filmId){
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        log.info(securityContext.getAuthentication().getName());
+    public Optional<Double> getFilmRating(@PathVariable Long filmId){
+        return ratingService.getAverageFilmRating(Film.builder().id(filmId).build());
     }
 }
